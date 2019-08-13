@@ -137,11 +137,11 @@ void MainWindow::load()
     {
         _dataset.load_variables(path);
     }
-    catch (bad_file_format_exc const& exc)
+    catch (bad_file_format_exc const & exc)
     {
         _dataset.clear();
         QMessageBox*  communicate = new QMessageBox(this);
-        communicate -> setText(QString(exc.what()));
+        communicate -> setText(exc.whats());
         communicate -> addButton(QString("Ok"),QMessageBox::AcceptRole);
         communicate -> exec();
         return;
@@ -162,7 +162,7 @@ void MainWindow::load()
    {
         _dataset.clear();
         QMessageBox*  communicate = new QMessageBox(this);
-        communicate -> setText(QString(exc.what()));
+        communicate -> setText(exc.whats());
         communicate -> addButton(QString("Ok"),QMessageBox::AcceptRole);
         communicate -> exec();
         return;
@@ -190,10 +190,10 @@ void MainWindow::outwrite()
     try {
         _dataset.outwrite(datapath, 0);
     }
-    catch (no_weightings_done const& arg)
+    catch (no_weightings_done const & arg)
     {
         QMessageBox box;
-        box.setText(arg.what());
+        box.setText(arg.whats());
         box.addButton(QString("OK"), QMessageBox::AcceptRole);
         box.exec();
     }

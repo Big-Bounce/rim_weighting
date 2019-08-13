@@ -45,7 +45,7 @@ public:
     {
         bool clearing;
         rimtype &rim;
-        double rms_component;
+        long double rms_component;
         read_adjustment(rimtype &cells, bool flag = false): clearing(flag), rim(cells), rms_component(0) {}
         void operator() (tree::node*);
     };

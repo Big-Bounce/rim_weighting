@@ -36,6 +36,8 @@ void engine::read_adjustment::operator() (tree::node* arg)
         rim[arg].actual = 0;
     else
         rms_component += pow(rim[arg].target - rim[arg].actual, 2);
+
+
 }
 
 engine::engine(datatype const &data, std::vector<tree*> const &axes, rimtype &rim, settings limits)
@@ -120,6 +122,8 @@ engine::engine(datatype const &data, std::vector<tree*> const &axes, rimtype &ri
         for_each(axes[next]->cells().cbegin(), axes[next]->cells().cend(), read_adjustment(rim, true));
         //reading current (before adjustment)
         rms += for_each(axes[current]->cells().cbegin(), axes[current]->cells().cend(), read_adjustment(rim)).rms_component;
+       // for (std::list<tree::node*>::const_iterator arg = axes[current]->cells().cbegin(); arg != axes[current]->cells().cend(); ++arg)
+          //      rms += pow(rim.at(*arg).target - rim.at(*arg).actual, 2);
         //clearing previous (if necessery)
         if (previous != next)
             for_each(axes[previous]->cells().cbegin(), axes[previous]->cells().cend(), read_adjustment(rim, true));
