@@ -201,6 +201,8 @@ void dataset::process::again(caf_type &cafeteria)
             temp.clear();
             temp = QString(stream.readLine());
         }
+	if (cafeteria.empty())
+		state = 1;
     }
     else if (!stream.atEnd())
         throw bad_file_format_exc();
